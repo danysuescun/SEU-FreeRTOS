@@ -75,21 +75,26 @@ void app_main()
  */
 void vTask1(void * parameter)
 {
-  double aux = acos(-1.0);  /* aux = PI */
- 
-  /* loop forever */
+  double aux = acos(-1.0);
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
   for(;;)
   {
     for (int i = 0; i < LOOP_COUNT_TASK_1; i++)
     {
         aux = sqrt(aux) * acos(-1.0) + aux * 0.1;
+
         if (i % 100 == 0)
         {
           printf("#");
-          fflush(stdout);   
+          fflush(stdout);
         }
-    }    
+    }
+
     aux = acos(-1.0);
+
+    /* Periodo = 200 ms */
+    vTaskDelayUntil(&xLastWakeTime, 200 / portTICK_PERIOD_MS);
   }
 }
 
@@ -98,21 +103,26 @@ void vTask1(void * parameter)
  */
 void vTask2(void * parameter)
 {
-  double aux = acos(-1.0);  /* aux = PI */
- 
-  /* loop forever */
+  double aux = acos(-1.0);
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
   for(;;)
   {
     for (int i = 0; i < LOOP_COUNT_TASK_2; i++)
     {
         aux = sqrt(aux) * acos(-1.0) + aux * 0.1;
+
         if (i % 100 == 0)
         {
           printf("-");
-          fflush(stdout);    
+          fflush(stdout);
         }
     }
+
     aux = acos(-1.0);
+
+    /* Periodo = 100 ms */
+    vTaskDelayUntil(&xLastWakeTime, 100 / portTICK_PERIOD_MS);
   }
 }
 
@@ -121,20 +131,25 @@ void vTask2(void * parameter)
  */
 void vTask3(void * parameter)
 {
-  double aux = acos(-1.0);  /* aux = PI */
- 
-  /* loop forever */
+  double aux = acos(-1.0);
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
   for(;;)
   {
     for (int i = 0; i < LOOP_COUNT_TASK_3; i++)
     {
         aux = sqrt(aux) * acos(-1.0) + aux * 0.1;
+
         if (i % 100 == 0)
         {
           printf(".");
-          fflush(stdout);    
+          fflush(stdout);
         }
     }
+
     aux = acos(-1.0);
+
+    /* Periodo = 100 ms */
+    vTaskDelayUntil(&xLastWakeTime, 100 / portTICK_PERIOD_MS);
   }
 }
