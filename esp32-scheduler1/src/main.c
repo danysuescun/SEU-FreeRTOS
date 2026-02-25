@@ -93,7 +93,6 @@ void vTask1(void * parameter)
 
     aux = acos(-1.0);
 
-    /* Periodo = 200 ms */
     vTaskDelayUntil(&xLastWakeTime, 200 / portTICK_PERIOD_MS);
   }
 }
@@ -108,20 +107,19 @@ void vTask2(void * parameter)
 
   for(;;)
   {
-    for (int i = 0; i < LOOP_COUNT_TASK_2; i++)
+    for (int i = 0; i < LOOP_COUNT_TASK_1; i++)
     {
         aux = sqrt(aux) * acos(-1.0) + aux * 0.1;
 
         if (i % 100 == 0)
         {
-          printf("-");
+          printf("#");
           fflush(stdout);
         }
     }
 
     aux = acos(-1.0);
 
-    /* Periodo = 100 ms */
     vTaskDelayUntil(&xLastWakeTime, 100 / portTICK_PERIOD_MS);
   }
 }
@@ -136,20 +134,19 @@ void vTask3(void * parameter)
 
   for(;;)
   {
-    for (int i = 0; i < LOOP_COUNT_TASK_3; i++)
+    for (int i = 0; i < LOOP_COUNT_TASK_1; i++)
     {
         aux = sqrt(aux) * acos(-1.0) + aux * 0.1;
 
         if (i % 100 == 0)
         {
-          printf(".");
+          printf("#");
           fflush(stdout);
         }
     }
 
     aux = acos(-1.0);
 
-    /* Periodo = 100 ms */
     vTaskDelayUntil(&xLastWakeTime, 100 / portTICK_PERIOD_MS);
   }
 }
